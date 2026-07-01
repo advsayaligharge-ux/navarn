@@ -174,6 +174,25 @@ html.lenis body {
   }
 }
 
+/* Heritage artwork layer system — CSS vars drive each production layer's
+   material treatment (fill/stroke/weight), overriding the motif's defaults. */
+.artlayer :is(path, circle, rect, line) {
+  stroke: var(--al-stroke, currentColor);
+  fill: var(--al-fill, none);
+  stroke-width: var(--al-sw, 1.6);
+}
+
+/* Sound toggle equalizer */
+@keyframes navarn-eq {
+  0%,
+  100% {
+    height: 3px;
+  }
+  50% {
+    height: 14px;
+  }
+}
+
 /* Chapter IV process cues */
 @keyframes navarn-sweep {
   0% {

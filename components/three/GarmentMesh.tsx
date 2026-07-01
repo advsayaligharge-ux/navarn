@@ -19,6 +19,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Environment, ContactShadows, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
+import { premiumCotton, puffPrint, embroideryThread, metallicGold } from "./materials";
 
 function useTeeGeometry(curveSegments: number) {
   return useMemo(() => {
@@ -66,43 +67,18 @@ export default function GarmentMesh({
   const bodyRef = useRef<THREE.Mesh>(null);
   const geo = useTeeGeometry(highTier ? 14 : 8);
 
-  // Emerald cloth with a matte, woven feel
-  const cloth = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#123A2E"),
-        roughness: 0.82,
-        metalness: 0.05,
-      }),
-    []
-  );
-  const gold = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#C9A85C"),
-        metalness: 1,
-        roughness: 0.3,
-        emissive: new THREE.Color("#2a1e08"),
-        emissiveIntensity: 0.3,
-      }),
-    []
-  );
-  const puff = useMemo(
-    () =>
-      new THREE.MeshStandardMaterial({
-        color: new THREE.Color(accent),
-        roughness: 0.55,
-        metalness: 0.05,
-      }),
-    [accent]
-  );
+  // The material system (components/three/materials)
+  const cloth = useMemo(() => premiumCotton("#123A2E", highTier), [highTier]);
+  const gold = useMemo(() => metallicGold(), []);
+  const puff = useMemo(() => puffPrint(accent), [accent]);
+  const thread = useMemo(() => embroideryThread(), []);
 
   // Embroidery: a ring of small gold "stitches" (instanced) on the chest
   const stitches = useMemo(() => {
     const count = highTier ? 48 : 28;
     const m = new THREE.InstancedMesh(
       new THREE.BoxGeometry(0.05, 0.11, 0.03),
-      gold,
+      thread,
       count
     );
     const dummy = new THREE.Object3D();
@@ -115,7 +91,7 @@ export default function GarmentMesh({
       m.setMatrixAt(i, dummy.matrix);
     }
     return m;
-  }, [gold, highTier]);
+  }, [thread, highTier]);
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime;

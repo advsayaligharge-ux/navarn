@@ -77,6 +77,33 @@ Canvas/SVG — so the film never stutters and never shows a broken canvas.
 > production artwork — sourced *with* and credited *to* the origin artisans
 > (VERBAL_IDENTITY §11) — replaces them in place.
 
+### Phase 3 — production-quality systems
+- **Heritage Artwork System** (`components/art/`) — each of the seven arts across
+  five production layers: **Historical reference → Luxury reinterpretation → DTF
+  print → Puff print → Embroidery**, with shared SVG filters (hand-drawn wobble,
+  puff emboss, cotton grain, gold sheen) and CMYK-registration / stitched passes.
+- **Material System** (`components/three/materials.ts`) — premium cotton
+  (MeshPhysical sheen + procedural weave normal), puff, embroidery thread,
+  metallic gold, luxury packaging.
+- **Visual Grade** (`components/three/Grade.tsx`) — film grain, luxury contrast,
+  emerald-gold push, bloom, museum vignette — **high-tier only**, dropped first
+  when frames dip.
+- **Cinematic Sound** (`lib/audio/SoundEngine.ts`) — a Web Audio engine
+  synthesising heritage / temple / workshop (with DTF + embroidery pulses) /
+  reveal ambience; muted by default, crossfaded per chapter. Recorded stems drop
+  into `config/assets` later.
+- **GLB pipeline** (`components/three/GarmentGLTF.tsx`) — Draco/KTX2 loader that
+  re-materials a production tee GLB; falls back to the procedural garment until
+  the GLB lands (same `Garment3D` API).
+- **Performance hardening** — postprocessing perf-gated, DPR clamps, quality
+  tiers, WebGL + reduced-motion fallbacks throughout.
+
+> **Production-asset honesty:** recorded audio stems, the garment GLB, and the
+> real historical artwork are external production assets that cannot be authored
+> in-repo. Phase 3 delivers the *systems* that consume them, plus working
+> procedural stand-ins (synthesised sound, procedural garment, house motifs) so
+> the experience is complete and playable today.
+
 ### The Film (homepage)
 The six-chapter descent from `EXPERIENCE_BLUEPRINT.md` — darkness → gold, loss → legacy:
 1. **The Forgotten Stories** — dark opening, drifting gold motes, descent through time

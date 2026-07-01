@@ -13,6 +13,7 @@ import { Canvas } from "@react-three/fiber";
 import { AdaptiveDpr, PerformanceMonitor } from "@react-three/drei";
 import { useState, Suspense } from "react";
 import type { QualitySettings } from "@/config/performance";
+import Grade from "./Grade";
 
 type SceneProps = {
   settings: QualitySettings;
@@ -20,6 +21,8 @@ type SceneProps = {
   className?: string;
   cameraZ?: number;
   onDegrade?: () => void;
+  /** Apply the cinematic grade (only honoured when the tier allows postprocessing). */
+  grade?: boolean;
 };
 
 export default function Scene({
@@ -28,8 +31,10 @@ export default function Scene({
   className,
   cameraZ = 5,
   onDegrade,
+  grade = false,
 }: SceneProps) {
   const [dpr, setDpr] = useState<number>(settings.dpr[1]);
+  const [graded, setGraded] = useState<boolean>(grade && settings.postprocessing);
 
   return (
     <Canvas
@@ -47,12 +52,14 @@ export default function Scene({
       <PerformanceMonitor
         onDecline={() => {
           setDpr(settings.dpr[0]);
+          setGraded(false); // drop the grade first when frames dip (TECHNICAL §6)
           onDegrade?.();
         }}
         onIncline={() => setDpr(settings.dpr[1])}
       />
       <AdaptiveDpr pixelated />
       <Suspense fallback={null}>{children}</Suspense>
+      {graded && <Grade />}
     </Canvas>
   );
 }
