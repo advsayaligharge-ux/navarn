@@ -7,9 +7,14 @@
  */
 
 import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-import ParticleField from "@/components/experience/ParticleField";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+
+// WebGL dust atmosphere — lazy, client-only, never blocks first paint (TECHNICAL §6)
+const DustField3D = dynamic(() => import("@/components/three/DustField3D"), {
+  ssr: false,
+});
 
 export default function ChapterI() {
   const root = useRef<HTMLDivElement>(null);
@@ -64,7 +69,7 @@ export default function ChapterI() {
             "radial-gradient(120% 90% at 50% 8%, rgba(169,130,60,0.18), rgba(12,39,31,0.35) 42%, #0c0c0b 78%)",
         }}
       />
-      <ParticleField density={110} />
+      <DustField3D />
 
       <div
         data-sink

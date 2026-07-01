@@ -22,23 +22,41 @@ This repository holds the frozen brand foundation and the cinematic website buil
 
 ### Stack
 - **Next.js 14** (App Router, TypeScript) — SSR shell for speed + SEO
-- **GSAP + ScrollTrigger** — the cinematic timelines
+- **Three.js + React Three Fiber + drei + postprocessing** — the WebGL layer (interactive gold Seal, dust atmosphere), lazy-loaded and quality-adaptive
+- **GSAP + ScrollTrigger** — the cinematic scroll timelines
 - **Lenis** — weighted "heavy-silk" smooth scroll (the film's projector)
+- **Framer Motion** — component-level interaction (the editorial Index menu, reveals)
 - **Tailwind CSS + CSS-variable design tokens** — one source of truth from `VISUAL_IDENTITY.md`
-- **Canvas 2D** — the dark-chapter atmosphere (real-time R3F 3D arrives in Phase 2, per the Technical Bible's "watched = baked, touched = live" law)
+
+### Architecture (Phase 0)
+- **Design token system** — `tokens/` (colors, typography, motion) → CSS variables + Tailwind theme
+- **Performance budget system** — `config/performance.ts` (quality tiers, hard budgets, FPS-downgrade thresholds)
+- **Asset pipeline** — `config/assets.ts` (GLB/KTX2 manifest, Draco/KTX2 decoder paths, preload-one-chapter-ahead)
+- **Three.js / R3F architecture** — `lib/three/` (WebGL detection, runtime QualityManager) + `components/three/` (adaptive `<Scene>`, `SealMesh`, `Seal3D`, `DustField3D`)
+- **Accessibility architecture** — `hooks/useReducedMotion` + a dignified static path; WebGL auto-fallback to Canvas/SVG; SSR-crawlable copy; gold focus rings
 
 ### Structure
 ```
 tokens/        design tokens — colors, typography, motion (single source of truth)
+config/        performance budget system + asset pipeline manifest
 app/           layout, fonts, globals (CSS-var tokens), the Film homepage
 components/
   experience/  the engine — SmoothScroll (Lenis), Reveal (GSAP), ParticleField
+  three/       the WebGL layer — Scene (adaptive Canvas), SealMesh, Seal3D,
+               DustField3D  (all lazy, ssr:false, quality-guarded)
   ui/          the luxury interaction system — Seal, GoldButton, ChapterRail,
-               Menu, SoundToggle, Wordmark, HouseChrome, HouseFooter
+               Menu (Framer Motion), SoundToggle, Wordmark, HouseChrome, HouseFooter
   chapters/    the six-chapter film — Threshold + Chapters I–VI
 hooks/         useReducedMotion (the dignified static path)
-lib/           gsap singleton
+lib/           gsap singleton; three/ (webgl detection, quality manager)
 ```
+
+### The "watched = baked, touched = live" law (TECHNICAL §1)
+Real-time WebGL is spent only where the visitor *touches*: the interactive gold
+**Seal** (Ch. VI) and the **dust atmosphere** (Ch. I). Everything else uses
+GSAP/CSS/Canvas. The R3F Canvas lazy-loads client-side, detects WebGL, adapts
+DPR/quality to the device, and falls back to Canvas/SVG — so the film never
+stutters and never shows a broken canvas.
 
 ### The Film (homepage)
 The six-chapter descent from `EXPERIENCE_BLUEPRINT.md` — darkness → gold, loss → legacy:

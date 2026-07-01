@@ -9,9 +9,16 @@
  */
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Reveal from "@/components/experience/Reveal";
 import Seal from "@/components/ui/Seal";
 import GoldButton from "@/components/ui/GoldButton";
+
+// The interactive WebGL Seal — the signature "touched = live" moment (Ch. VI)
+const Seal3D = dynamic(() => import("@/components/three/Seal3D"), {
+  ssr: false,
+  loading: () => <Seal size={92} />,
+});
 
 export default function ChapterVI() {
   const [inducted, setInducted] = useState(false);
@@ -31,13 +38,13 @@ export default function ChapterVI() {
         }}
       />
       <Reveal className="relative z-10 flex flex-col items-center px-6">
-        {/* The Seal — interactive induction (a preview of the Phase-2 3D seal) */}
+        {/* The Seal — interactive WebGL induction; press to become a keeper */}
         <button
           onClick={() => setInducted(true)}
           aria-label="Press the seal to become a keeper"
-          className="group mb-12 transition-transform duration-cinematic ease-reveal hover:scale-105 active:scale-95"
+          className="group mb-12"
         >
-          <Seal size={92} />
+          <Seal3D pressed={inducted} size={300} />
         </button>
 
         <span className="caption mb-8 text-brass">Chapter VI — The Threshold</span>
