@@ -2,12 +2,24 @@
 
 /**
  * CHAPTER V — THE REVELATION
- * The final luxury oversized garment, revealed on the sovereign man. Warm
- * daylight at last — the film travels from darkness to gold. Desire and pride,
- * fully arrived. EXPERIENCE_BLUEPRINT Ch. V.
+ * The final luxury oversized garment, revealed — now an interactive 3D artifact
+ * the visitor turns in warm daylight (360°, fabric ripple, gold, embroidery,
+ * puff). "Touched = live." EXPERIENCE_BLUEPRINT Ch. V.
  */
 
+import dynamic from "next/dynamic";
 import Reveal from "@/components/experience/Reveal";
+import { accent } from "@/tokens/colors";
+
+// The interactive WebGL tee — lazy, client-only (TECHNICAL §6)
+const Garment3D = dynamic(() => import("@/components/three/Garment3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center rounded-[3px] bg-emerald">
+      <span className="caption text-champagne/70">Preparing the artifact…</span>
+    </div>
+  ),
+});
 
 export default function ChapterV() {
   return (
@@ -25,22 +37,10 @@ export default function ChapterV() {
         }}
       />
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 md:grid-cols-2">
-        {/* The artifact on its plinth */}
+        {/* The interactive artifact */}
         <Reveal className="order-2 md:order-1">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[3px] bg-emerald shadow-[0_40px_80px_-30px_rgba(18,58,46,0.6)]">
-            <div
-              aria-hidden
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(70% 60% at 50% 30%, rgba(217,190,134,0.22), transparent 60%)",
-              }}
-            />
-            <div className="absolute inset-5 rounded-[2px] border border-champagne/40" />
-            <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-champagne/70" />
-            <div className="absolute bottom-6 left-0 right-0 text-center">
-              <span className="caption text-champagne/80">The Tarpa Dancer</span>
-            </div>
+            <Garment3D accent={accent.warli} />
           </div>
         </Reveal>
 
@@ -60,6 +60,7 @@ export default function ChapterV() {
               ["Collection", "Warli — The First Language"],
               ["Lineage", "Warli · Maharashtra"],
               ["Craft", "DTF · Puff · Ivory-thread embroidery"],
+              ["Finishing", "Gold hem · Sealed as an heirloom"],
             ].map(([k, v]) => (
               <div key={k} className="flex items-baseline gap-6">
                 <dt className="w-28 shrink-0 font-body text-[0.6rem] uppercase tracking-[0.24em] text-stone">
@@ -69,6 +70,10 @@ export default function ChapterV() {
               </div>
             ))}
           </dl>
+
+          <p className="mt-10 caption text-brass">
+            Turn the garment · you saw it made, now hold it
+          </p>
         </Reveal>
       </div>
     </section>

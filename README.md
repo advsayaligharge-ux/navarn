@@ -53,10 +53,29 @@ lib/           gsap singleton; three/ (webgl detection, quality manager)
 
 ### The "watched = baked, touched = live" law (TECHNICAL §1)
 Real-time WebGL is spent only where the visitor *touches*: the interactive gold
-**Seal** (Ch. VI) and the **dust atmosphere** (Ch. I). Everything else uses
-GSAP/CSS/Canvas. The R3F Canvas lazy-loads client-side, detects WebGL, adapts
-DPR/quality to the device, and falls back to Canvas/SVG — so the film never
-stutters and never shows a broken canvas.
+**Seal** (Ch. VI), the **dust atmosphere** (Ch. I), and the **360° garment**
+(Ch. V). Everything else uses GSAP/CSS/SVG/Canvas. The R3F Canvas lazy-loads
+client-side, detects WebGL, adapts DPR/quality to the device, and falls back to
+Canvas/SVG — so the film never stutters and never shows a broken canvas.
+
+### Phase 2 — deepened chapters
+- **Ch. II — The Arts Emerge:** an interactive experience for seven heritage
+  arts (Warli, Madhubani, Sanjhi, Pichwai, Maharaja, Warrior, Untamed Horse) —
+  each carried through *original heritage art → artistic reconstruction →
+  luxury reinterpretation* with self-painting SVG motifs (`components/art/`).
+- **Ch. III — The Transformation:** scroll-driven three-phase *heritage art →
+  digital design → luxury fashion artwork*, one motif across three treatments.
+- **Ch. IV — The Making:** the DTF → heat press → puff → embroidery → finishing
+  line, each station with its own process cue (print sweep, press + steam, puff
+  rise, stitch draw-on, gold finish).
+- **Ch. V — The Revelation:** an interactive **3D oversized tee** — 360°
+  rotation, fabric ripple, gold details, instanced embroidery stitches, and a
+  raised puff-print motif (`components/three/GarmentMesh`). Procedural in
+  Phase 2; a production GLB drops in behind the same `Garment3D` API.
+
+> The art motifs are house interpretations for the experience layer; the
+> production artwork — sourced *with* and credited *to* the origin artisans
+> (VERBAL_IDENTITY §11) — replaces them in place.
 
 ### The Film (homepage)
 The six-chapter descent from `EXPERIENCE_BLUEPRINT.md` — darkness → gold, loss → legacy:

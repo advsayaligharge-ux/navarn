@@ -153,6 +153,46 @@ html.lenis body {
   }
 }
 
+/* Draw-on: line art paints itself alive (Chapter II — "The Arts Emerge") */
+@keyframes navarn-draw {
+  from {
+    stroke-dashoffset: 480;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.draw-on :is(path, circle, rect, line) {
+  stroke-dasharray: 480;
+  animation: navarn-draw 2s var(--ease-reveal) forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw-on :is(path, circle, rect, line) {
+    animation: none;
+    stroke-dashoffset: 0;
+    stroke-dasharray: none;
+  }
+}
+
+/* Chapter IV process cues */
+@keyframes navarn-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+@keyframes navarn-press {
+  0%,
+  100% {
+    transform: translateY(-30%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+}
+
 /* Utility: full-viewport cinematic chapter */
 .chapter {
   position: relative;
