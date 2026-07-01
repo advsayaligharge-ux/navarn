@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   NAVARN — Design tokens as CSS variables
+   Single source of truth mirror of /tokens (VISUAL_IDENTITY §2, §4, §7)
+   ============================================================ */
+:root {
+  /* Core */
+  --royal-cream: #f5eee0;
+  --ivory: #fbf8f2;
+  --champagne-gold: #d9be86;
+  --antique-gold: #a9823c;
+  --deep-charcoal: #1e1e1c;
+  --emerald: #123a2e;
+  --midnight-navy: #171a34;
+
+  /* Secondary */
+  --emerald-deep: #0c271f;
+  --charcoal-soft: #2c2c28;
+  --bone: #e7dbc6;
+  --parchment: #ebe2ce;
+  --stone-grey: #8a8578;
+  --antique-brass: #8c6a2e;
+
+  /* Gold gradient */
+  --gold-1: #e4ce9a;
+  --gold-2: #c9a85c;
+  --gold-3: #9c7530;
+  --gold-sheen: linear-gradient(135deg, var(--gold-1), var(--gold-2), var(--gold-3));
+
+  /* Motion — the weighted-silk law */
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-drift: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 400ms;
+  --dur-reveal: 900ms;
+  --dur-cinematic: 1200ms;
+
+  /* Active collection accent (defaults to Warli — the founding chapter) */
+  --accent: #a8452e;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Lenis drives scroll; keep native smooth off to avoid conflict */
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--deep-charcoal);
+  color: var(--ivory);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Typographic defaults */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+.font-editorial {
+  font-family: var(--font-editorial), Georgia, serif;
+}
+
+/* Museum caption */
+.caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--stone-grey);
+  font-weight: 400;
+}
+
+/* The gold-leaf text treatment (VISUAL_IDENTITY: gold is light, not paint) */
+.text-gold-leaf {
+  background: var(--gold-sheen);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Selection */
+::selection {
+  background: var(--antique-gold);
+  color: var(--deep-charcoal);
+}
+
+/* Focus — a gold ring, per accessibility (TECHNICAL §10) */
+:focus-visible {
+  outline: 2px solid var(--champagne-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Thin luxury scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--deep-charcoal);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--antique-brass);
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Reduced motion — a first-class, dignified path (TECHNICAL §10)
+   The story survives without the spectacle.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* Reveal elements are shown fully at rest under reduced motion */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* Utility: full-viewport cinematic chapter */
+.chapter {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
