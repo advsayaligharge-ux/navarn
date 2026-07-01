@@ -1,20 +1,26 @@
 # NAVARN — BRAND DNA
 
-### The Luxury Heritage Menswear House of India
+### The World's Luxury Storytelling Menswear House
 
-> *"To preserve India's stories through premium fashion."*
+> **House mission:** *"We preserve stories through luxury fashion."*
+> **Founding mission (the heart):** *"To preserve India's stories through premium fashion."*
+> **Vision:** *"To become the world's premier luxury storytelling fashion house."*
 
 This document is the constitution of NAVARN. Every garment, photograph, word, pixel and gesture that carries the name must be able to trace itself back to a line written here. Read it before you design anything.
+
+> **SCOPE NOTE (authoritative):** NAVARN began as India's heritage house and India remains its founding heart and soul — but NAVARN is **not** a regional brand. It is a **limitless storytelling universe** drawing on world civilizations, empires, mythologies, royal cultures, tribal arts, nature, architecture, sacred symbols and craft traditions across the entire world. Where this document speaks of "India," read it as **the founding realm of a global house**. The expanded universe, its realms, and the world-scale collection architecture are defined in `BRAND_UNIVERSE.md`, which is **authoritative on scope, mission and collection architecture** and refines this document accordingly.
 
 ---
 
 ## 0. The One Truth
 
-**NAVARN turns India's civilizational memory into wearable heritage.**
+**NAVARN turns civilization's memory into wearable heritage — beginning with India, reaching for the world.**
 
-We do not print Indian motifs on t-shirts. We take a living art form — a Warli wall, a Madhubani fish, a Maharaja's court — and we *rehouse* it in modern, oversized, luxury-finished garments so a man can wear his civilization every day, not once at a wedding.
+We do not print motifs on t-shirts. We take a living story — a Warli wall, a Maharaja's court, a pharaoh's symbol, a Norse god, a bird, a sacred geometry — and we *rehouse* it in modern, oversized, luxury-finished garments so a man can wear a piece of human civilization every day, not once at a wedding.
 
-The garment is the medium. The culture is the product. Never invert this.
+The garment is the medium. The story is the product. Never invert this.
+
+*(India is where the house was born and remains its deepest chapter; the world is its canvas. See `BRAND_UNIVERSE.md`.)*
 
 ---
 
