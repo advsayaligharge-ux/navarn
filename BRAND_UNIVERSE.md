@@ -4,6 +4,8 @@
 
 > **Authoritative on scope, mission and collection architecture.** This document elevates NAVARN from a regional heritage brand into a **limitless storytelling universe**. It refines `BRAND_DNA.md` on matters of scope and mission; the `VISUAL_IDENTITY.md`, `VERBAL_IDENTITY.md` and `EXPERIENCE_BLUEPRINT.md` bibles all still hold and were built to scale — this document extends their reach from a nation to the world.
 
+> **⚑ LAUNCH REALITY — "India first. World later." (read first):** The global universe described here is the **long-term roadmap only**. For NAVARN's first phase — **the next 3 years** — the house is deliberately and entirely focused on **India: NAVARN as India's first luxury storytelling menswear house.** Everything in this document beyond Realm I (Bharat) is *future vision*, not current build. The operative, authoritative plan for the launch phase is `LAUNCH_STRATEGY.md`. Treat this universe as the horizon the house is walking toward — not the ground it stands on today. Bharat is the ground.
+
 ---
 
 ## 0. THE ELEVATION
@@ -108,7 +110,7 @@ And every collection obeys the same **five-movement storytelling arc** (from `VE
 
 The universe reveals itself in **Volumes**, so expansion feels like an unfolding epic, not a scattered catalog. Each volume deepens credibility before widening scope.
 
-- **Volume I — BHARAT (now):** complete the founding realm. India, fully realized. Establish the house, the craft chain, the reverence, the customer. *India is the proof.*
+- **Volume I — BHARAT (now, and the entire first 3 years):** the founding realm *is* the launch. India, fully realized — establish the house, the craft chain, the reverence, the customer, and market leadership as *India's first luxury storytelling menswear house*. **This is not a stepping-stone to be rushed; it is the whole of Phase 1.** Volumes II–V below are the long-term horizon only, to be opened after India is won. *India is the proof, and for now, India is the plan.* (See `LAUNCH_STRATEGY.md`.)
 - **Volume II — THE WILD & THE SACRED:** the most universal, least sensitive realms — animals, birds, nature, sacred geometry. Globally legible, emotionally universal, low appropriation risk. The natural first step outward, and a bridge (India's tiger, peacock, lotus link the volumes).
 - **Volume III — THE CIVILIZATIONS & THE PANTHEON:** the great empires and world mythologies — the "wow" realms that announce NAVARN as a *world* house. Egypt, Greece, Rome, Norse, and beyond.
 - **Volume IV — THE CROWN, THE BUILT WORLD & THE ORIGINS:** royal courts, monuments and cities, world tribal arts — the connoisseur realms, requiring the deepest research and partnership.

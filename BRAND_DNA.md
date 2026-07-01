@@ -8,7 +8,7 @@
 
 This document is the constitution of NAVARN. Every garment, photograph, word, pixel and gesture that carries the name must be able to trace itself back to a line written here. Read it before you design anything.
 
-> **SCOPE NOTE (authoritative):** NAVARN began as India's heritage house and India remains its founding heart and soul — but NAVARN is **not** a regional brand. It is a **limitless storytelling universe** drawing on world civilizations, empires, mythologies, royal cultures, tribal arts, nature, architecture, sacred symbols and craft traditions across the entire world. Where this document speaks of "India," read it as **the founding realm of a global house**. The expanded universe, its realms, and the world-scale collection architecture are defined in `BRAND_UNIVERSE.md`, which is **authoritative on scope, mission and collection architecture** and refines this document accordingly.
+> **SCOPE NOTE (authoritative):** NAVARN's *long-term* vision is global — a **limitless storytelling universe** drawing on world civilizations, empires, mythologies, royal cultures, tribal arts, nature, architecture, sacred symbols and craft traditions (defined in `BRAND_UNIVERSE.md`). **But the launch and first 3 years are India-first — "India first. World later."** For Phase 1, NAVARN is positioned squarely as **India's first luxury storytelling menswear house**, and Bharat (India) is not merely the founding heart but the *entire operational focus*. The global universe is roadmap only until India is won. The authoritative plan for the launch phase — positioning, priority collections and sequence — is `LAUNCH_STRATEGY.md`. Read every mention of the "world" in this document as *the horizon*, and every mention of "India" as *the ground the house stands on today*.
 
 ---
 
@@ -219,9 +219,11 @@ Each collection is a **chapter of India**. All collections inherit one narrative
 **Origin (state / art form) → The Story → The Emotion → Visual Language → Materials → Technique → Packaging.**
 
 Grouped in three houses:
-- **The Folk-Art Houses** (living tribal & regional art forms): Warli, Madhubani, Kalamkari, Gond, Pattachitra
+- **The Folk-Art Houses** (living tribal & regional art forms): Warli, Madhubani, Kalamkari, Gond, Pattachitra, Sanjhi, Pichwai
 - **The Legacy Houses** (royalty, valour, spirit, myth): Maharaja, Warrior, Untamed Horse, Fire, Mythology
 - **The Keystone**: 28 States Heritage Collection
+
+*(Launch priority note: for NAVARN's India-first Phase 1 — the first 3 years — the priority collections are Warli, Madhubani, Kalamkari, Gond, Pattachitra, Sanjhi, Pichwai, Maharaja, Warrior, Untamed Horse and Mythology. See `LAUNCH_STRATEGY.md`, authoritative on launch phasing and sequence.)*
 
 ---
 
@@ -277,6 +279,28 @@ Grouped in three houses:
 - **Materials:** Structured cotton-canvas with a treated, slightly stiff scroll-like hand; ivory and ochre grounds.
 - **Technique:** DTF for iconography and border precision; embroidery and gold-thread on borders and jewelry of figures; puff on decorative frames.
 - **Packaging:** Cloth-wrapped like a consecrated scroll, tied and sealed; a printed border frames the story-card like a devotional panel; a small brass-tone seal.
+
+---
+
+### 6.5a SANJHI — *The Cut Prayer*
+
+- **Story:** From the Braj region — Mathura and Vrindavan — the near-lost temple art of *Sanjhi*: devotional images of Krishna's world cut by hand from paper with fine scissors, once laid on water or used as stencils for festival rangoli. An art of astonishing delicacy and negative space, practiced by temple priests, now kept alive by only a handful of masters. NAVARN carries this vanishing paper-cut prayer onto cloth before it disappears.
+- **Emotional positioning:** Delicacy, devotion, the fragile and the fleeting made lasting, Krishna's Braj. *"A prayer cut from paper, kept from disappearing."*
+- **Visual language:** Intricate symmetrical filigree, lace-like positive-negative interplay, Krishna and gopi motifs, peacocks, lotus and kadamba trees; fine line on ivory and indigo grounds.
+- **Materials:** Fine smooth cotton to hold delicate detail; ivory, indigo and Braj-blue grounds.
+- **Technique:** Ultra-fine DTF to capture the paper-cut filigree; laser-fine tonal embroidery on key motifs; subtle debossed/relief effects to echo cut-paper depth.
+- **Packaging:** A paper-cut motif window in the outer sleeve (echoing the art itself), indigo box, gold-foil peacock seal, tissue printed with filigree; story-card die-cut like a Sanjhi stencil.
+
+---
+
+### 6.5b PICHWAI — *The Cloth Behind the God*
+
+- **Story:** From Nathdwara, Rajasthan — the grand devotional *Pichwai* cloths hung *behind* the idol of Shrinathji (Krishna) in the temple, depicting his life, the seasons and festivals in lavish detail: lotus ponds, cows, gopis and peacocks under a jewelled night. Painted over weeks by master artists in mineral and gold. NAVARN inherits the most opulent of India's devotional textile arts.
+- **Emotional positioning:** Opulence, devotion, abundance, the divine pastoral, festival splendour. *"The cloth once hung behind a god."*
+- **Visual language:** Lush, dense, symmetrical composition — lotus, cow, peacock and gopi motifs; deep jewel palette of Nathdwara — lapis, emerald, saffron and gold on dark ground.
+- **Materials:** Premium heavyweight cotton and cotton-silk; deep lapis, emerald and midnight grounds to hold the opulence.
+- **Technique:** Rich DTF for detailed pastoral scenes; dense gold-thread embroidery on lotus, cow and border; puff on jewelled and floral elements; metallic finishing for temple splendour.
+- **Packaging:** A flagship devotional box in deep lapis or emerald, gold-foil lotus-and-cow seal, silk-feel lining, tissue printed with a Pichwai border; a Certificate of Heritage naming the Nathdwara tradition and its master painters.
 
 ---
 
