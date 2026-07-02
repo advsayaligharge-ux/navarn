@@ -35,9 +35,27 @@ proportions, emotional positioning, luxury colour relationships (ground 75 /
 accent 15 / gold 10), and visual-weight distribution — plus the
 `RECOGNITION_INVARIANTS` that stay constant across every universe.
 `components/artifact/GarmentPlate.tsx` is the reusable renderer: it places any
-emblem/artwork on the silhouette by the placement grammar (front whispers, back
-speaks). Retune the spec's constants to the real launch designs and the whole
-system snaps to them — nothing downstream changes.
+emblem/artwork on the silhouette by the placement grammar.
+
+### VISUAL DNA — calibrated & LOCKED v1 (`lib/visual/visualDNA.ts`)
+Calibrated from the first four launch designs (Untamed · NAVARN heritage band ·
+Timeless Rebel · Rooted in Culture / Heritage 2.0). Extracted as **grammar only**
+— no motifs, collections, or categories:
+- **Silhouette:** oversized, boxy, drop-shoulder, sleeve-cuff bands.
+- **Composition:** FRONT = wordmark above one hero; BACK = the story down a
+  vertical spine (wordmark → serif headline → tagline).
+- **Grounds:** espresso · ink-black · ivory · washed-indigo (real launch grounds).
+- **Colour modes:** mono-luxury (dark + gold) or heritage-vibrant (neutral + folk
+  palette) — **gold is the constant**.
+- **Type:** wide-tracked caps; serif headline; dash-flanked title.
+- **Craft zones:** DTF = hero; foil/embroidery = wordmark, bands, cuffs, hem
+  label; puff = bold caps/borders.
+- `DNA_SIGNATURE` = the recognition invariants: *swap Horse→Tiger, Warli→Japanese,
+  Maharaja→Samurai, India→Egypt — keep this DNA — it still reads NAVARN.*
+
+`GarmentPlate` now reproduces this composition (front hero + wordmark; back spine
++ stacked story; cuff bands; gold hem + woven label). The system is **locked**;
+recalibrate only by editing the DNA layer with new reference designs.
 
 ## The Foundation (frozen — do not edit as strategy)
 

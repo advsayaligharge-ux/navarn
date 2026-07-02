@@ -11,7 +11,7 @@
 
 import { useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ARTIFACTS, toneHex } from "@/content/artifacts";
+import { ARTIFACTS, toneHex, groundHex } from "@/content/artifacts";
 import { EMBLEMS, EMBLEM_PROFILES } from "./emblems";
 import GarmentPlate from "@/components/artifact/GarmentPlate";
 import { craftSuitability } from "@/lib/visual/artifactSystem";
@@ -104,8 +104,18 @@ export default function ArtEmerge() {
               transition={{ duration: 0.6, ease: EASE }}
               className="flex items-center justify-center p-6"
             >
-              <GarmentPlate view={view} tone={tone} caption={artifact.name} className="h-[52vh] max-h-[520px] w-auto">
-                {/* The emblem, rendered luxury-execution: gold stroke, tone glow */}
+              <GarmentPlate
+                view={view}
+                groundHex={groundHex(artifact.visual.ground)}
+                tone={tone}
+                mode={artifact.visual.mode}
+                wordmark="NAVARN"
+                title={artifact.visual.title}
+                tagline={artifact.visual.tagline}
+                wordmarkOn={artifact.visual.wordmarkOn}
+                className="h-[52vh] max-h-[520px] w-auto"
+              >
+                {/* The hero, rendered luxury-execution: gold stroke, tone glow */}
                 <g
                   className="artlayer"
                   style={

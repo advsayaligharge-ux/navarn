@@ -21,7 +21,18 @@
  */
 
 import type { EmblemKey } from "@/components/art/emblems";
-import { accent, type AccentTone } from "@/tokens/colors";
+import { accent, ground, type AccentTone, type GroundToken } from "@/tokens/colors";
+
+export type ColorMode = "mono" | "vibrant";
+
+/** Visual execution per the locked VISUAL DNA (lib/visual/visualDNA). */
+export interface ArtifactVisual {
+  ground: GroundToken; // fabric colour
+  mode: ColorMode; // mono-luxury (dark + gold) or heritage-vibrant
+  wordmarkOn: "front" | "back";
+  title?: string; // the garment headline (back spine / front)
+  tagline?: string; // the forward-looking sub-line
+}
 
 /** The six-pillar artifact shape — the whole architecture, in one type. */
 export interface Artifact {
@@ -30,6 +41,7 @@ export interface Artifact {
   tone: AccentTone;
   emblem: EmblemKey; // abstract placeholder only — carries no fixed meaning
   artwork?: string; // production artwork URL, when it exists
+  visual: ArtifactVisual;
 
   // ── The six pillars ──────────────────────────────────────────────
   story: string; // 1. Story — why it exists, the emotion
@@ -50,23 +62,25 @@ export const ARTIFACTS: Artifact[] = [
     name: "Untamed Horse",
     tone: "dust",
     emblem: "radiant",
+    visual: { ground: "espresso", mode: "mono", wordmarkOn: "back", title: "UNTAMED" },
     story: "The spirit that cannot be held — freedom rendered as movement.",
-    heritageSource: "The wild, noble horse of Indian memory and myth.",
-    transformation: "Raw motion, redrawn as a modern statement graphic.",
+    heritageSource: "The wild, noble horse of memory and myth.",
+    transformation: "Raw motion, redrawn as a tonal gold statement graphic.",
     craft: ["DTF", "Puff", "Gold-thread embroidery"],
-    luxuryExecution: "Weighted oversized cotton, gold hem, sealed as an heirloom.",
+    luxuryExecution: "Weighted oversized cotton, gold hairline hem, sealed as an heirloom.",
     identity: "The man who will not be tamed.",
   },
   {
     id: "artifact-02",
     name: "Heritage Strip",
-    tone: "terracotta",
+    tone: "saffron",
     emblem: "weave",
+    visual: { ground: "inkBlack", mode: "mono", wordmarkOn: "front" },
     story: "The threads that hold a civilization together.",
-    heritageSource: "Woven bands of memory carried as everyday pattern.",
-    transformation: "Traditional banding, recomposed for the modern silhouette.",
-    craft: ["DTF", "Embroidery", "Luxury finishing"],
-    luxuryExecution: "Structured drape, tonal stitch, considered interior.",
+    heritageSource: "A gold procession band carried as everyday pattern.",
+    transformation: "A heritage band, recomposed across the chest and cuffs.",
+    craft: ["Foil", "Embroidery", "Luxury finishing"],
+    luxuryExecution: "Black cotton, gold band, woven hem label.",
     identity: "The man who wears where he comes from.",
   },
   {
@@ -74,6 +88,7 @@ export const ARTIFACTS: Artifact[] = [
     name: "Heritage Fusion",
     tone: "indigo",
     emblem: "gateway",
+    visual: { ground: "charcoal", mode: "mono", wordmarkOn: "back", title: "FUSION" },
     story: "Where the ancient meets the modern.",
     heritageSource: "An old gateway fused with a contemporary frame.",
     transformation: "Two eras layered into a single composed mark.",
@@ -84,13 +99,20 @@ export const ARTIFACTS: Artifact[] = [
   {
     id: "artifact-04",
     name: "Rooted in Culture",
-    tone: "ochre",
+    tone: "terracotta",
     emblem: "interlace",
+    visual: {
+      ground: "washedIndigo",
+      mode: "vibrant",
+      wordmarkOn: "back",
+      title: "ROOTED IN CULTURE",
+      tagline: "BUILT FOR THE FUTURE",
+    },
     story: "You cannot rise without roots.",
     heritageSource: "Identity that runs deeper than trend.",
-    transformation: "Roots abstracted into a quiet, grounding emblem.",
+    transformation: "Heritage pattern down the spine, story stacked upon it.",
     craft: ["DTF", "Embroidery"],
-    luxuryExecution: "Earth-toned heavyweight cotton, hand-finished edges.",
+    luxuryExecution: "Washed heavyweight cotton, vibrant folk spine, hand-finished.",
     identity: "The man who knows his ground.",
   },
   {
@@ -98,11 +120,12 @@ export const ARTIFACTS: Artifact[] = [
     name: "Heritage 2.0",
     tone: "crimson",
     emblem: "column",
+    visual: { ground: "ivory", mode: "vibrant", wordmarkOn: "back", title: "TIMELESS REBEL" },
     story: "Tradition, made new.",
-    heritageSource: "The ancient, reinterpreted for the present.",
-    transformation: "Half-ornate, half-reimagined — heritage upgraded.",
+    heritageSource: "The ancient, reinterpreted in vivid folk colour.",
+    transformation: "A centered medallion, high-contrast and sharp.",
     craft: ["DTF", "Puff", "Metallic finishing"],
-    luxuryExecution: "Sharp modern cut, metallic accents, quiet confidence.",
+    luxuryExecution: "Ivory cotton, vibrant print, sharp premium detail.",
     identity: "The man who carries the past forward.",
   },
   {
@@ -110,13 +133,15 @@ export const ARTIFACTS: Artifact[] = [
     name: "Royal & Mythic",
     tone: "emerald",
     emblem: "crest",
+    visual: { ground: "inkBlack", mode: "mono", wordmarkOn: "back", title: "ROYAL & MYTHIC" },
     story: "Dress like the throne remembers you.",
     heritageSource: "Crowns and myth — the bearing of kings and legend.",
     transformation: "Sovereign iconography distilled into a crest.",
     craft: ["Gold-thread embroidery", "Puff", "Luxury finishing"],
-    luxuryExecution: "Deep jewel tones, dense gold work, flagship packaging.",
+    luxuryExecution: "Deep ground, dense gold work, flagship packaging.",
     identity: "The man who commands the room.",
   },
 ];
 
 export const toneHex = (t: AccentTone) => accent[t];
+export const groundHex = (g: GroundToken) => ground[g];

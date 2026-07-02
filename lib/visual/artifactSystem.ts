@@ -1,5 +1,12 @@
 /**
- * NAVARN — VISUAL ARTIFACT SYSTEM
+ * NAVARN — VISUAL ARTIFACT SYSTEM   ██ LOCKED v1 — CALIBRATED ██
+ *
+ * Calibrated against the first four launch designs; the authoritative,
+ * measured calibration lives in `lib/visual/visualDNA.ts` (the VISUAL DNA
+ * layer), which this system defers to for silhouette, placement, colour modes,
+ * grounds, type scale and craft zones. This file remains the structural spec
+ * and the craftSuitability() engine. Treat both as LOCKED — change the DNA
+ * layer (with new reference designs) to recalibrate; do not fork the grammar.
  *
  * The invariant visual grammar of the house. Its objective: a customer must
  * recognise a product as NAVARN instantly, even if the artwork, story, country,

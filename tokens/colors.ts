@@ -50,5 +50,34 @@ export const accent = {
   cosmic: "#1B1F45",
 } as const;
 
+/**
+ * GROUND tones — calibrated from the launch designs (visual DNA). The four
+ * launch grounds are espresso, ink-black, ivory and washed-indigo; charcoal &
+ * emerald are retained for the film. A ground is the fabric colour an artifact
+ * lives on.
+ */
+export const ground = {
+  espresso: "#2E241C",
+  inkBlack: "#0E0E0C",
+  ivory: "#F4F0E8",
+  washedIndigo: "#33425C",
+  charcoal: color.deepCharcoal,
+  emerald: color.emerald,
+} as const;
+
+/**
+ * The heritage-vibrant folk palette observed on the neutral-ground designs
+ * (the six-dot palette). Used in `mode: "vibrant"` artifacts.
+ */
+export const folk = {
+  terracotta: "#C55A2B",
+  cobalt: "#234B8C",
+  forest: "#2E6B47",
+  crimson: "#B5232B",
+  saffron: "#E0A83B",
+  ink: "#1A1A18",
+} as const;
+
 export type ColorToken = keyof typeof color;
 export type AccentTone = keyof typeof accent;
+export type GroundToken = keyof typeof ground;
