@@ -12,8 +12,8 @@
 
 import { useId, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LAUNCH_ARTIFACTS, toneHex } from "@/content/artifacts";
-import { MOTIFS } from "./motifs";
+import { ARTIFACTS, toneHex } from "@/content/artifacts";
+import { EMBLEMS } from "./emblems";
 import ArtworkDefs from "./ArtworkDefs";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -31,8 +31,8 @@ type LayerKey = (typeof LAYERS)[number]["key"];
 export default function ArtEmerge() {
   const [idx, setIdx] = useState(0);
   const [layer, setLayer] = useState<LayerKey>("reference");
-  const artifact = LAUNCH_ARTIFACTS[idx];
-  const Paths = MOTIFS[artifact.motif];
+  const artifact = ARTIFACTS[idx];
+  const Paths = EMBLEMS[artifact.emblem];
   const tone = toneHex(artifact.tone);
   const pfx = useId().replace(/:/g, "");
 
@@ -43,7 +43,7 @@ export default function ArtEmerge() {
   > = {
     reference: {
       bg: "var(--parchment)",
-      caption: artifact.universe,
+      caption: "Heritage source",
       group: { color: "#5a4632", ["--al-stroke" as string]: "#5a4632", ["--al-sw" as string]: "1.9", filter: f("hand") },
     },
     luxury: {
@@ -82,7 +82,7 @@ export default function ArtEmerge() {
       {/* Left — the artifact index */}
       <div>
         <ul className="flex flex-col">
-          {LAUNCH_ARTIFACTS.map((a, i) => (
+          {ARTIFACTS.map((a, i) => (
             <li key={a.id}>
               <button
                 onClick={() => setIdx(i)}
@@ -106,15 +106,31 @@ export default function ArtEmerge() {
                   </span>
                 </span>
                 <span className="hidden font-editorial text-base italic text-stone sm:block">
-                  {a.universe}
+                  {a.story}
                 </span>
               </button>
             </li>
           ))}
         </ul>
-        <p className="mt-6 max-w-reading font-editorial text-lg italic text-stone">
-          {artifact.essence}
-        </p>
+
+        {/* The six pillars of the selected artifact — the architecture, surfaced */}
+        <dl className="mt-8 space-y-3 border-t border-white/8 pt-6">
+          {[
+            ["Story", artifact.story],
+            ["Heritage", artifact.heritageSource],
+            ["Transformation", artifact.transformation],
+            ["Craft", artifact.craft.join(" · ")],
+            ["Luxury", artifact.luxuryExecution],
+            ["Identity", artifact.identity],
+          ].map(([k, v]) => (
+            <div key={k} className="flex items-baseline gap-4">
+              <dt className="w-24 shrink-0 font-body text-[0.55rem] uppercase tracking-[0.2em] text-brass">
+                {k}
+              </dt>
+              <dd className="font-editorial text-[0.98rem] italic leading-snug text-stone">{v}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
 
       {/* Right — the craft atelier */}

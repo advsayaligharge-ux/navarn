@@ -1,95 +1,121 @@
 /**
- * NAVARN — Artifact Registry (design-first, universe-agnostic)
+ * NAVARN — Artifact Registry (design-first, unbounded)
  *
- * NAVARN is a Luxury Storytelling Menswear House. Each garment is an
- * INDEPENDENT ARTIFACT — a statement piece defined by its story and emotion,
- * NOT a member of a fixed art-form collection. The website architecture reads
- * from this flat registry, so new artifacts (and entire new design universes —
- * animals, birds, gods, warriors, kings, tribal arts, historical patterns,
- * state arts, global motifs, or anything else) are added here with zero
- * structural change. India is the launch focus; the model has no ceiling.
+ * NAVARN is a Design-First Luxury Storytelling House. It is NOT collection-first,
+ * NOT art-form-first, NOT motif-first. Every product is simply an ARTIFACT.
  *
- * `universe` is a free-form tag, never an enum — the house is deliberately
- * unbounded. `motif` points at a design motif (components/art/motifs); `tone`
- * at a heritage accent (tokens/colors). Production artwork drops into the same
- * slots, sourced & credited per VERBAL_IDENTITY §11.
+ * Architecture:
+ *   HOUSE → ARTIFACT REGISTRY → ARTIFACT
+ *     ARTIFACT = { story, heritageSource, transformation, craft, luxuryExecution, identity }
+ *
+ * An artifact's heritage source may be ANYTHING in the universe — Indian
+ * heritage, state/tribal arts, royal history, mythology, animals, birds, nature,
+ * architecture, patterns, historical fashion, gods & sacred symbolism, cities,
+ * countries, global civilizations, abstract storytelling, or concepts not yet
+ * imagined. India is the launch market; the universe is unlimited.
+ *
+ * The rows below are SEED DATA — the current launch products, fully replaceable.
+ * NOTHING in the codebase branches on a specific artifact id, name, or emblem;
+ * the site renders whatever this registry contains. Real artwork arrives as a
+ * production asset (`artwork`) and replaces the placeholder emblem in place.
  */
 
-import type { MotifKey } from "@/components/art/motifs";
+import type { EmblemKey } from "@/components/art/emblems";
 import { accent, type AccentTone } from "@/tokens/colors";
 
+/** The six-pillar artifact shape — the whole architecture, in one type. */
 export interface Artifact {
   id: string;
   name: string;
-  essence: string; // the emotion — why it exists, in one line
-  heritageNote: string; // the story/source (any universe, free-form)
-  universe: string; // free-form tag (Animal, Fusion, Royal & Mythic, …)
   tone: AccentTone;
-  motif: MotifKey;
-  craft: string[]; // the techniques that build it
+  emblem: EmblemKey; // abstract placeholder only — carries no fixed meaning
+  artwork?: string; // production artwork URL, when it exists
+
+  // ── The six pillars ──────────────────────────────────────────────
+  story: string; // 1. Story — why it exists, the emotion
+  heritageSource: string; // 2. Heritage — the source it draws from (any universe)
+  transformation: string; // 3. Transformation — how it was carried into the modern
+  craft: string[]; // 4. Craft — the techniques that build it
+  luxuryExecution: string; // 5. Luxury — the finishing that makes it an heirloom
+  identity: string; // 6. Identity — who the wearer becomes
 }
 
-/** The current design-first launch line — statement pieces, not collections. */
-export const LAUNCH_ARTIFACTS: Artifact[] = [
+/**
+ * SEED registry — the initial launch artifacts. Replaceable data, not structure.
+ * Add, remove, or reorder freely; the experience adapts with no code change.
+ */
+export const ARTIFACTS: Artifact[] = [
   {
-    id: "untamed-horse",
+    id: "artifact-01",
     name: "Untamed Horse",
-    essence: "The spirit that cannot be held.",
-    heritageNote: "Freedom, nobility, and unbroken motion — the eternal Indian symbol of the wild.",
-    universe: "The Living World",
     tone: "dust",
-    motif: "horse",
+    emblem: "radiant",
+    story: "The spirit that cannot be held — freedom rendered as movement.",
+    heritageSource: "The wild, noble horse of Indian memory and myth.",
+    transformation: "Raw motion, redrawn as a modern statement graphic.",
     craft: ["DTF", "Puff", "Gold-thread embroidery"],
+    luxuryExecution: "Weighted oversized cotton, gold hem, sealed as an heirloom.",
+    identity: "The man who will not be tamed.",
   },
   {
-    id: "heritage-strip",
+    id: "artifact-02",
     name: "Heritage Strip",
-    essence: "The threads that hold a civilization together.",
-    heritageNote: "Woven bands of memory — heritage carried as pattern, worn every day.",
-    universe: "Pattern",
     tone: "terracotta",
-    motif: "strip",
+    emblem: "weave",
+    story: "The threads that hold a civilization together.",
+    heritageSource: "Woven bands of memory carried as everyday pattern.",
+    transformation: "Traditional banding, recomposed for the modern silhouette.",
     craft: ["DTF", "Embroidery", "Luxury finishing"],
+    luxuryExecution: "Structured drape, tonal stitch, considered interior.",
+    identity: "The man who wears where he comes from.",
   },
   {
-    id: "heritage-fusion",
+    id: "artifact-03",
     name: "Heritage Fusion",
-    essence: "Where the ancient meets the modern.",
-    heritageNote: "An old arch fused with a modern frame — the past, rebuilt for now.",
-    universe: "Fusion",
     tone: "indigo",
-    motif: "fusion",
+    emblem: "gateway",
+    story: "Where the ancient meets the modern.",
+    heritageSource: "An old gateway fused with a contemporary frame.",
+    transformation: "Two eras layered into a single composed mark.",
     craft: ["DTF", "Puff", "Gold finishing"],
+    luxuryExecution: "Matte-and-metal contrast, precise print placement.",
+    identity: "The man who belongs to both worlds.",
   },
   {
-    id: "rooted-in-culture",
+    id: "artifact-04",
     name: "Rooted in Culture",
-    essence: "You cannot rise without roots.",
-    heritageNote: "A tree of roots — identity that runs deeper than trend.",
-    universe: "Cultural",
     tone: "ochre",
-    motif: "roots",
+    emblem: "interlace",
+    story: "You cannot rise without roots.",
+    heritageSource: "Identity that runs deeper than trend.",
+    transformation: "Roots abstracted into a quiet, grounding emblem.",
     craft: ["DTF", "Embroidery"],
+    luxuryExecution: "Earth-toned heavyweight cotton, hand-finished edges.",
+    identity: "The man who knows his ground.",
   },
   {
-    id: "heritage-2-0",
+    id: "artifact-05",
     name: "Heritage 2.0",
-    essence: "Tradition, made new.",
-    heritageNote: "Half-ornate, half-reinterpreted — the ancient rendered for the modern man.",
-    universe: "Reinterpretation",
     tone: "crimson",
-    motif: "reinterpret",
+    emblem: "column",
+    story: "Tradition, made new.",
+    heritageSource: "The ancient, reinterpreted for the present.",
+    transformation: "Half-ornate, half-reimagined — heritage upgraded.",
     craft: ["DTF", "Puff", "Metallic finishing"],
+    luxuryExecution: "Sharp modern cut, metallic accents, quiet confidence.",
+    identity: "The man who carries the past forward.",
   },
   {
-    id: "royal-mythic",
+    id: "artifact-06",
     name: "Royal & Mythic",
-    essence: "Dress like the throne remembers you.",
-    heritageNote: "Crowns and myth — the bearing of kings and the weight of legend.",
-    universe: "Royal & Mythic",
     tone: "emerald",
-    motif: "royalMythic",
+    emblem: "crest",
+    story: "Dress like the throne remembers you.",
+    heritageSource: "Crowns and myth — the bearing of kings and legend.",
+    transformation: "Sovereign iconography distilled into a crest.",
     craft: ["Gold-thread embroidery", "Puff", "Luxury finishing"],
+    luxuryExecution: "Deep jewel tones, dense gold work, flagship packaging.",
+    identity: "The man who commands the room.",
   },
 ];
 

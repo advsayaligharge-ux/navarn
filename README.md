@@ -4,14 +4,26 @@
 
 This repository holds the frozen brand foundation and the cinematic website build.
 
-> **Design-first architecture.** NAVARN is design-first / emotion-first, **not**
-> collection-first. Each garment is an **independent artifact**, defined in a flat,
-> universe-agnostic registry (`content/artifacts.ts`). **No art form is hardcoded**
-> into the architecture — new artifacts and entire new design universes (animals,
-> gods, patterns, global motifs, …) are added as data, with zero structural change.
-> The experience is organized around six pillars: **Story · Transformation ·
-> Heritage · Craft · Luxury · Identity.** India is the launch focus; the house has
-> no ceiling.
+> **Design-first architecture.** NAVARN is a **Design-First Luxury Storytelling
+> House** — not collection-first, art-form-first, or motif-first. Everything is
+> simply an **ARTIFACT**:
+>
+> ```
+> HOUSE → ARTIFACT REGISTRY → ARTIFACT
+>   ARTIFACT = { story · heritageSource · transformation · craft · luxuryExecution · identity }
+> ```
+>
+> - `content/artifacts.ts` — the registry (six-pillar `Artifact` type + replaceable
+>   seed rows). **No code branches on any artifact id, name, or emblem.**
+> - `content/pillars.ts` — the six pillars the whole experience is organized around:
+>   **Story · Transformation · Heritage · Craft · Luxury · Identity.**
+> - `components/art/emblems.tsx` — **abstract placeholder emblems** only (no motifs,
+>   art forms, or categories). Real artwork drops into `Artifact.artwork`.
+>
+> A heritage source may be anything in the universe (Indian heritage, state/tribal
+> arts, royalty, myth, animals, nature, architecture, patterns, cities,
+> civilizations, or concepts not yet imagined). India is the launch market; the
+> universe is unlimited.
 
 ## The Foundation (frozen — do not edit as strategy)
 

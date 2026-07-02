@@ -9,10 +9,10 @@
 
 import dynamic from "next/dynamic";
 import Reveal from "@/components/experience/Reveal";
-import { LAUNCH_ARTIFACTS, toneHex } from "@/content/artifacts";
+import { ARTIFACTS, toneHex } from "@/content/artifacts";
 
-// The featured launch artifact — data-driven, no hardcoded art form
-const FEATURED = LAUNCH_ARTIFACTS[0];
+// The featured artifact — data-driven, nothing hardcoded
+const FEATURED = ARTIFACTS[0];
 
 // The interactive WebGL tee — lazy, client-only (TECHNICAL §6)
 const Garment3D = dynamic(() => import("@/components/three/Garment3D"), {
@@ -61,9 +61,9 @@ export default function ChapterV() {
           <dl className="mt-12 space-y-4 border-t border-charcoal/10 pt-8">
             {[
               ["Artifact", FEATURED.name],
-              ["Essence", FEATURED.essence],
-              ["Story", FEATURED.heritageNote],
+              ["Story", FEATURED.story],
               ["Craft", FEATURED.craft.join(" · ")],
+              ["Identity", FEATURED.identity],
             ].map(([k, v]) => (
               <div key={k} className="flex items-baseline gap-6">
                 <dt className="w-28 shrink-0 font-body text-[0.6rem] uppercase tracking-[0.24em] text-stone">

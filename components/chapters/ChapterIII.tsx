@@ -10,8 +10,8 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { MOTIFS } from "@/components/art/motifs";
-import { LAUNCH_ARTIFACTS, toneHex } from "@/content/artifacts";
+import { EMBLEMS } from "@/components/art/emblems";
+import { ARTIFACTS, toneHex } from "@/content/artifacts";
 
 const PHASES = [
   { key: "heritage", label: "Heritage art", note: "Painted by hand, on the wall of a village." },
@@ -19,9 +19,9 @@ const PHASES = [
   { key: "luxury", label: "Luxury fashion artwork", note: "Placed on the garment, raised in gold." },
 ] as const;
 
-// Data-driven: the featured launch artifact drives the transformation demo
-const FEATURED = LAUNCH_ARTIFACTS[0];
-const Motif = MOTIFS[FEATURED.motif];
+// Data-driven: the first artifact in the registry drives the transformation demo
+const FEATURED = ARTIFACTS[0];
+const Motif = EMBLEMS[FEATURED.emblem];
 const FEATURED_TONE = toneHex(FEATURED.tone);
 
 export default function ChapterIII() {
