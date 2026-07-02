@@ -1,0 +1,48 @@
+import type { Metadata, Viewport } from "next";
+import { fontVariables } from "./fonts";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.navarn.in"),
+  title: {
+    default: "NAVARN — India's Luxury Storytelling Menswear House",
+    template: "%s · NAVARN",
+  },
+  description:
+    "NAVARN is a luxury storytelling menswear house. Each garment is an independent artifact — heritage transformed into modern oversized luxury. Wear your heritage.",
+  keywords: [
+    "NAVARN",
+    "luxury storytelling menswear",
+    "luxury heritage menswear",
+    "Indian heritage fashion",
+    "storytelling fashion",
+    "oversized statement pieces",
+  ],
+  openGraph: {
+    title: "NAVARN — Wear Your Heritage",
+    description: "India's first luxury storytelling menswear house.",
+    type: "website",
+    locale: "en_IN",
+    siteName: "NAVARN",
+  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1E1E1C",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={fontVariables}>
+      <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        {children}
+      </body>
+    </html>
+  );
+}
