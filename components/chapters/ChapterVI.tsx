@@ -10,9 +10,9 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import Reveal from "@/components/experience/Reveal";
 import Seal from "@/components/ui/Seal";
-import GoldButton from "@/components/ui/GoldButton";
 
 // The interactive WebGL Seal — the signature "touched = live" moment (Ch. VI)
 const Seal3D = dynamic(() => import("@/components/three/Seal3D"), {
@@ -59,16 +59,18 @@ export default function ChapterVI() {
         </p>
 
         <div className="mt-14 flex flex-col items-center gap-6">
-          {inducted ? (
+          {inducted && (
             <p className="text-gold-leaf font-display text-3xl">Welcome, keeper.</p>
-          ) : (
-            <GoldButton variant="outline" onClick={() => setInducted(true)}>
-              Become a Keeper
-            </GoldButton>
           )}
-          <p className="caption text-stone/60">
-            The collections open here — once the house is ready.
-          </p>
+          <Link
+            href="/house"
+            onClick={() => setInducted(true)}
+            className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-[2px] border border-champagne/50 px-9 py-4 font-body text-[0.72rem] uppercase tracking-[0.28em] text-champagne transition-colors duration-reveal ease-reveal hover:text-charcoal"
+          >
+            <span aria-hidden className="absolute inset-0 -translate-x-full bg-[var(--gold-sheen)] transition-transform duration-cinematic ease-reveal group-hover:translate-x-0" />
+            <span className="relative z-10">Enter the House</span>
+          </Link>
+          <p className="caption text-stone/60">The artifacts await.</p>
         </div>
 
         <p className="mt-20 font-body text-xs font-light uppercase tracking-[0.3em] text-stone/60">

@@ -71,7 +71,15 @@ recalibrate only by editing the DNA layer with new reference designs.
 
 ## The Build
 
-**Phase 0 (foundation) + Phase 1 (cinematic homepage)** — commerce is intentionally frozen; no Shopify catalog is provisioned until the experience is approved.
+**Phase 0 (foundation) + Phase 1 (cinematic homepage) + The House** — commerce is intentionally frozen; no Shopify catalog is provisioned until the experience is approved.
+
+### Routes
+- **`/`** — The Film (six-chapter cinematic homepage). Chapter VI → *Enter the House*.
+- **`/house`** — The House: the artifact gallery (calibrated garment-plate cards).
+- **`/artifacts/[id]`** — the artifact experience: front/back viewer, the six-pillar
+  storytelling, the Heritage→Luxury transformation journey, the craft journey
+  (with per-artifact craft-suitability), and the luxury/threshold layer.
+  Statically generated per artifact from the registry. **No commerce.**
 
 ### Stack
 - **Next.js 14** (App Router, TypeScript) — SSR shell for speed + SEO

@@ -13,7 +13,7 @@ import Seal from "./Seal";
 
 const INDEX = [
   { label: "The Film", note: "The six-chapter descent", href: "#top" },
-  { label: "The Artifacts", note: "Statement pieces, each its own story", href: "#chapter-ii" },
+  { label: "The House", note: "The gallery of artifacts", href: "/house" },
   { label: "The Making", note: "Ink, heat, thread, finishing", href: "#chapter-iv" },
   { label: "The Heritage", note: "The stories & their keepers", href: "#chapter-i" },
   { label: "The Keepers", note: "Become one", href: "#chapter-vi" },
@@ -26,6 +26,10 @@ export default function Menu() {
 
   const go = (href: string) => {
     setOpen(false);
+    if (href.startsWith("/")) {
+      window.location.href = href; // route to another page (e.g. The House)
+      return;
+    }
     const id = href.replace("#", "");
     if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
     else document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
