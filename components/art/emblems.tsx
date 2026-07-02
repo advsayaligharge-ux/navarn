@@ -15,8 +15,25 @@
  * Drawn on a 0..100 viewBox; strokes use currentColor + non-scaling-stroke.
  */
 
+import type { VisualProfile } from "@/lib/visual/artifactSystem";
+
 export type EmblemPaths = () => JSX.Element;
 export type EmblemKey = "radiant" | "weave" | "gateway" | "interlace" | "column" | "crest";
+
+/**
+ * The visual CHARACTER of each placeholder emblem (line weight, fill density,
+ * detail, scale). The VISUAL_ARTIFACT_SYSTEM's craftSuitability() reads this to
+ * recommend DTF / puff / embroidery / foil. Real artwork supplies its own
+ * profile; this keeps the craft grammar working with the placeholders.
+ */
+export const EMBLEM_PROFILES: Record<EmblemKey, VisualProfile> = {
+  radiant: { lineWeight: 0.5, fillDensity: 0.3, detail: 0.6, scale: 0.7 },
+  weave: { lineWeight: 0.4, fillDensity: 0.7, detail: 0.8, scale: 0.5 },
+  gateway: { lineWeight: 0.7, fillDensity: 0.3, detail: 0.4, scale: 0.8 },
+  interlace: { lineWeight: 0.6, fillDensity: 0.4, detail: 0.7, scale: 0.5 },
+  column: { lineWeight: 0.5, fillDensity: 0.35, detail: 0.5, scale: 0.6 },
+  crest: { lineWeight: 0.8, fillDensity: 0.5, detail: 0.5, scale: 0.85 },
+};
 
 const S = {
   fill: "none",

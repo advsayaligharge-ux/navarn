@@ -25,6 +25,20 @@ This repository holds the frozen brand foundation and the cinematic website buil
 > civilizations, or concepts not yet imagined). India is the launch market; the
 > universe is unlimited.
 
+### The Visual Artifact System (`lib/visual/artifactSystem.ts`)
+The invariant visual **grammar** that makes any artifact read as NAVARN — encoding
+only grammar, never motifs/categories: oversized silhouette, front/back
+composition balance, print-placement zones, premium spacing, type hierarchy,
+storytelling placement, the heritage→luxury transformation, **craft-suitability**
+(DTF / puff / embroidery / foil scored from an artwork's visual profile),
+proportions, emotional positioning, luxury colour relationships (ground 75 /
+accent 15 / gold 10), and visual-weight distribution — plus the
+`RECOGNITION_INVARIANTS` that stay constant across every universe.
+`components/artifact/GarmentPlate.tsx` is the reusable renderer: it places any
+emblem/artwork on the silhouette by the placement grammar (front whispers, back
+speaks). Retune the spec's constants to the real launch designs and the whole
+system snaps to them — nothing downstream changes.
+
 ## The Foundation (frozen — do not edit as strategy)
 
 | Document | Governs |
