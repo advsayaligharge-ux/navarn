@@ -12,7 +12,8 @@
 import { useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ARTIFACTS, toneHex, groundHex } from "@/content/artifacts";
-import { EMBLEMS, EMBLEM_PROFILES } from "./emblems";
+import { EMBLEM_PROFILES } from "./emblems";
+import { resolveArt } from "@/components/artifact/launchArt";
 import GarmentPlate from "@/components/artifact/GarmentPlate";
 import { craftSuitability } from "@/lib/visual/artifactSystem";
 
@@ -24,7 +25,7 @@ export default function ArtEmerge() {
   const [idx, setIdx] = useState(0);
   const [view, setView] = useState<"front" | "back">("front");
   const artifact = ARTIFACTS[idx];
-  const Emblem = EMBLEMS[artifact.emblem];
+  const Emblem = resolveArt(artifact);
   const tone = toneHex(artifact.tone);
   const suit = craftSuitability(EMBLEM_PROFILES[artifact.emblem]);
 
@@ -113,7 +114,8 @@ export default function ArtEmerge() {
                 title={artifact.visual.title}
                 tagline={artifact.visual.tagline}
                 wordmarkOn={artifact.visual.wordmarkOn}
-                className="h-[52vh] max-h-[520px] w-auto"
+                artwork={artifact.artwork}
+                className="h-[40vh] w-auto max-w-full sm:h-[46vh] md:h-[52vh] md:max-h-[520px]"
               >
                 {/* The hero, rendered luxury-execution: gold stroke, tone glow */}
                 <g

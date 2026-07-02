@@ -6,6 +6,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/experience/SmoothScroll";
+import MuseumAtmosphere from "@/components/experience/MuseumAtmosphere";
 import HouseHeader from "@/components/house/HouseHeader";
 import HouseFooter from "@/components/ui/HouseFooter";
 import ArtifactDetail from "@/components/artifact/ArtifactDetail";
@@ -33,8 +34,11 @@ export default function ArtifactPage({ params }: { params: { id: string } }) {
 
   return (
     <SmoothScroll>
+      <MuseumAtmosphere />
       <HouseHeader />
-      <ArtifactDetail artifact={artifact} prev={prev} next={next} />
+      <div className="lux-enter relative z-10">
+        <ArtifactDetail artifact={artifact} prev={prev} next={next} />
+      </div>
       <HouseFooter />
     </SmoothScroll>
   );

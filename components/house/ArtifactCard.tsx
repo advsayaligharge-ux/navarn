@@ -7,12 +7,12 @@
 
 import Link from "next/link";
 import GarmentPlate from "@/components/artifact/GarmentPlate";
-import { EMBLEMS } from "@/components/art/emblems";
+import { resolveArt } from "@/components/artifact/launchArt";
 import { toneHex, groundHex, type Artifact } from "@/content/artifacts";
 import type { CSSProperties } from "react";
 
 export default function ArtifactCard({ artifact }: { artifact: Artifact }) {
-  const Emblem = EMBLEMS[artifact.emblem];
+  const Emblem = resolveArt(artifact);
   const tone = toneHex(artifact.tone);
 
   return (
@@ -34,7 +34,8 @@ export default function ArtifactCard({ artifact }: { artifact: Artifact }) {
           title={artifact.visual.title}
           tagline={artifact.visual.tagline}
           wordmarkOn={artifact.visual.wordmarkOn}
-          className="h-[46vh] max-h-[440px] w-auto transition-transform duration-cinematic ease-reveal group-hover:scale-[1.03]"
+          artwork={artifact.artwork}
+          className="h-[36vh] w-auto max-w-full transition-transform duration-cinematic ease-reveal group-hover:scale-[1.03] sm:h-[40vh] md:h-[46vh] md:max-h-[440px]"
         >
           <g
             className="artlayer"

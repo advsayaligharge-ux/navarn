@@ -13,7 +13,8 @@ import { useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/experience/Reveal";
 import GarmentPlate from "./GarmentPlate";
-import { EMBLEMS, EMBLEM_PROFILES } from "@/components/art/emblems";
+import { EMBLEM_PROFILES } from "@/components/art/emblems";
+import { resolveArt } from "./launchArt";
 import { craftSuitability } from "@/lib/visual/artifactSystem";
 import { toneHex, groundHex, type Artifact } from "@/content/artifacts";
 
@@ -31,7 +32,7 @@ export default function ArtifactDetail({
   next: NavRef;
 }) {
   const [view, setView] = useState<"front" | "back">("front");
-  const Emblem = EMBLEMS[artifact.emblem];
+  const Emblem = resolveArt(artifact);
   const tone = toneHex(artifact.tone);
   const suit = craftSuitability(EMBLEM_PROFILES[artifact.emblem]);
 
@@ -70,14 +71,17 @@ export default function ArtifactDetail({
       {/* ── Hero: front/back viewer + name/story ── */}
       <section className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-16 md:grid-cols-2 md:px-12 md:py-24">
         <div className="relative">
-          <div className="relative flex items-center justify-center overflow-hidden rounded-[3px] border border-white/8 bg-charcoal-soft p-6">
+          <div
+            className="relative flex items-center justify-center overflow-hidden rounded-[3px] border border-white/8 bg-charcoal-soft p-6"
+            style={{ perspective: 1400 }}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={view}
-                initial={{ opacity: 0, scale: 0.99 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, ease: EASE }}
+                initial={{ opacity: 0, rotateY: view === "front" ? -10 : 10 }}
+                animate={{ opacity: 1, rotateY: 0 }}
+                exit={{ opacity: 0, rotateY: view === "front" ? 10 : -10 }}
+                transition={{ duration: 0.7, ease: EASE }}
                 className="flex items-center justify-center"
               >
                 <GarmentPlate
@@ -89,7 +93,8 @@ export default function ArtifactDetail({
                   title={artifact.visual.title}
                   tagline={artifact.visual.tagline}
                   wordmarkOn={artifact.visual.wordmarkOn}
-                  className="h-[58vh] max-h-[580px] w-auto"
+                  artwork={artifact.artwork}
+                  className="h-[42vh] w-auto max-w-full sm:h-[52vh] md:h-[58vh] md:max-h-[580px]"
                 >
                   <g className="artlayer" style={emblemStyle}>
                     <Emblem />

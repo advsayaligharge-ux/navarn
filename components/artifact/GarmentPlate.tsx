@@ -43,6 +43,7 @@ export default function GarmentPlate({
   title,
   tagline,
   wordmarkOn = "back",
+  artwork,
   children,
   className,
 }: {
@@ -54,10 +55,12 @@ export default function GarmentPlate({
   title?: string;
   tagline?: string;
   wordmarkOn?: "front" | "back";
+  artwork?: string; // production raster; overrides the SVG hero when present
   children: React.ReactNode; // hero emblem/artwork in its own 0..100 space
   className?: string;
 }) {
   const light = isLight(groundHex);
+  const uid = `gp-${view}`;
   const headlineInk = light ? "#22314f" : "var(--ivory)";
   const brandInk = light ? tone : GOLD;
   const spineFill = mode === "vibrant" ? tone : GOLD;
@@ -77,8 +80,22 @@ export default function GarmentPlate({
 
   return (
     <svg viewBox={`0 0 ${VBW} ${VBH}`} className={className} role="img" aria-label={`${title ?? wordmark} — ${view}`}>
+      <defs>
+        {/* Museum key light — soft sheen from upper-left */}
+        <radialGradient id={`${uid}-light`} cx="38%" cy="22%" r="80%">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity={light ? 0.5 : 0.14} />
+          <stop offset="45%" stopColor="#ffffff" stopOpacity="0" />
+          <stop offset="100%" stopColor="#000000" stopOpacity={light ? 0.06 : 0.34} />
+        </radialGradient>
+        <clipPath id={`${uid}-body`}>
+          <path d={teePath(view)} />
+        </clipPath>
+      </defs>
+
       {/* Fabric body */}
       <path d={teePath(view)} fill={groundHex} stroke={light ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.06)"} strokeWidth={0.6} />
+      {/* Premium material: sheen + edge vignette, clipped to the garment */}
+      <path d={teePath(view)} fill={`url(#${uid}-light)`} clipPath={`url(#${uid}-body)`} />
       {/* Neck ribbing */}
       <path
         d={`M 37 16 Q 50 ${16 + (view === "front" ? 13 : 6)} 63 16`}
@@ -113,8 +130,12 @@ export default function GarmentPlate({
               {wordmark}
             </text>
           )}
-          {/* The hero */}
-          <g transform={`translate(${hx} ${hy}) scale(${s})`}>{children}</g>
+          {/* The hero — production raster if present, else the SVG artwork */}
+          {artwork ? (
+            <image href={artwork} x={hx} y={hy} width={markW} height={markW} preserveAspectRatio="xMidYMid meet" />
+          ) : (
+            <g transform={`translate(${hx} ${hy}) scale(${s})`}>{children}</g>
+          )}
           {/* Optional front title, dash-flanked */}
           {title && wordmarkOn === "front" && (
             <text x="50" y="98" textAnchor="middle" fill={headlineInk}
