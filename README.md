@@ -4,6 +4,15 @@
 
 This repository holds the frozen brand foundation and the cinematic website build.
 
+> **Design-first architecture.** NAVARN is design-first / emotion-first, **not**
+> collection-first. Each garment is an **independent artifact**, defined in a flat,
+> universe-agnostic registry (`content/artifacts.ts`). **No art form is hardcoded**
+> into the architecture — new artifacts and entire new design universes (animals,
+> gods, patterns, global motifs, …) are added as data, with zero structural change.
+> The experience is organized around six pillars: **Story · Transformation ·
+> Heritage · Craft · Luxury · Identity.** India is the launch focus; the house has
+> no ceiling.
+
 ## The Foundation (frozen — do not edit as strategy)
 
 | Document | Governs |

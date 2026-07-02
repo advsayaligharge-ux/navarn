@@ -26,7 +26,7 @@ export default function Garment3D({ accent = "#A8452E" }: { accent?: string }) {
       <div className="relative flex h-full w-full items-center justify-center rounded-[3px] bg-emerald">
         <div className="absolute inset-5 rounded-[2px] border border-champagne/40" />
         <div className="h-28 w-28 rounded-full border-2 border-dashed border-champagne/70" />
-        <span className="absolute bottom-6 caption text-champagne/80">The Tarpa Dancer</span>
+        <span className="absolute bottom-6 caption text-champagne/80">The Artifact</span>
       </div>
     );
   }

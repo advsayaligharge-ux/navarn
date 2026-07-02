@@ -7,7 +7,7 @@ import Seal from "./Seal";
 
 export default function HouseFooter() {
   const cols: { title: string; items: string[] }[] = [
-    { title: "The House", items: ["The Film", "The Collections", "The Making", "The Heritage"] },
+    { title: "The House", items: ["The Film", "The Artifacts", "The Making", "The Heritage"] },
     { title: "The Keepers", items: ["Become a Keeper", "Keepers' Voices", "Your Archive"] },
     { title: "Concierge", items: ["Contact", "Care & Craft", "Shipping & Keeping"] },
   ];

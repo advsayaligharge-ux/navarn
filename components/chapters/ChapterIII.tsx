@@ -10,7 +10,8 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { ART_MOTIFS } from "@/components/art/motifs";
+import { MOTIFS } from "@/components/art/motifs";
+import { LAUNCH_ARTIFACTS, toneHex } from "@/content/artifacts";
 
 const PHASES = [
   { key: "heritage", label: "Heritage art", note: "Painted by hand, on the wall of a village." },
@@ -18,7 +19,10 @@ const PHASES = [
   { key: "luxury", label: "Luxury fashion artwork", note: "Placed on the garment, raised in gold." },
 ] as const;
 
-const Warli = ART_MOTIFS[0].Paths;
+// Data-driven: the featured launch artifact drives the transformation demo
+const FEATURED = LAUNCH_ARTIFACTS[0];
+const Motif = MOTIFS[FEATURED.motif];
+const FEATURED_TONE = toneHex(FEATURED.tone);
 
 export default function ChapterIII() {
   const root = useRef<HTMLDivElement>(null);
@@ -63,13 +67,13 @@ export default function ChapterIII() {
       <div className="relative z-10 grid w-full max-w-5xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 md:px-10">
         {/* The stage — three layered treatments of one motif */}
         <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-[3px] border border-champagne/20">
-          {/* Heritage — parchment, terracotta line */}
-          <Layer opacity={op[0]} bg="var(--parchment)" color={ART_MOTIFS[0].color}>
-            <Warli />
+          {/* Heritage — parchment, heritage-tone line */}
+          <Layer opacity={op[0]} bg="var(--parchment)" color={FEATURED_TONE}>
+            <Motif />
           </Layer>
           {/* Digital — dark, ivory vector on gold grid */}
           <Layer opacity={op[1]} bg="#141412" color="var(--ivory)" grid>
-            <Warli />
+            <Motif />
           </Layer>
           {/* Luxury — emerald garment, gold-leaf */}
           <Layer
@@ -79,7 +83,7 @@ export default function ChapterIII() {
             glow
             frame
           >
-            <Warli />
+            <Motif />
           </Layer>
         </div>
 

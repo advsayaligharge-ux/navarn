@@ -31,22 +31,24 @@ export const color = {
 } as const;
 
 /**
- * Collection accent colors — Phase 1 (Bharat) priority collections.
- * VISUAL_IDENTITY §2.3 + LAUNCH_STRATEGY §3.
+ * Heritage accent TONES — universe-agnostic (NOT tied to any art form or fixed
+ * collection). NAVARN is design-first: each artifact chooses a tone. New design
+ * universes (animals, gods, patterns, global motifs…) reuse or extend these.
+ * VISUAL_IDENTITY §2.3.
  */
 export const accent = {
-  warli: "#A8452E", // Warli Terracotta — The First Language
-  madhubani: "#7E2B22", // Madder Red — The Painted Prayer
-  kalamkari: "#2A3A5E", // Kalamkari Indigo — The Pen of the Storyteller
-  gond: "#B07A2B", // Forest Ochre — The Song of the Forest
-  pattachitra: "#C6772F", // Temple Saffron — The Cloth of the Gods
-  sanjhi: "#3A6EA5", // Braj Blue — The Cut Prayer
-  pichwai: "#1F4E79", // Nathdwara Lapis — The Cloth Behind the God
-  maharaja: "#123A2E", // Royal Emerald — The Weight of a Crown
-  warrior: "#8C1C1C", // Warrior Crimson — The Vow of Valour
-  horse: "#CBB894", // Dust Bone — The Spirit That Cannot Be Held
-  mythology: "#1B1F45", // Cosmic Indigo — The Endless Epic
+  terracotta: "#A8452E",
+  madder: "#7E2B22",
+  indigo: "#2A3A5E",
+  ochre: "#B07A2B",
+  saffron: "#C6772F",
+  brajBlue: "#3A6EA5",
+  lapis: "#1F4E79",
+  emerald: "#123A2E",
+  crimson: "#8C1C1C",
+  dust: "#CBB894",
+  cosmic: "#1B1F45",
 } as const;
 
 export type ColorToken = keyof typeof color;
-export type AccentToken = keyof typeof accent;
+export type AccentTone = keyof typeof accent;

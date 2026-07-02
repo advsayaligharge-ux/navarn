@@ -13,9 +13,9 @@ import Seal from "./Seal";
 
 const INDEX = [
   { label: "The Film", note: "The six-chapter descent", href: "#top" },
-  { label: "The Collections", note: "The chapters of Bharat", href: "#chapter-ii" },
+  { label: "The Artifacts", note: "Statement pieces, each its own story", href: "#chapter-ii" },
   { label: "The Making", note: "Ink, heat, thread, finishing", href: "#chapter-iv" },
-  { label: "The Heritage", note: "The art forms & their keepers", href: "#chapter-ii" },
+  { label: "The Heritage", note: "The stories & their keepers", href: "#chapter-i" },
   { label: "The Keepers", note: "Become one", href: "#chapter-vi" },
 ];
 

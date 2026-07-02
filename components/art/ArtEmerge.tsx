@@ -1,57 +1,50 @@
 "use client";
 
 /**
- * NAVARN — Heritage Artwork System (Chapter II atelier)
- * Production-quality pass: for each of the seven Phase-1 arts (Warli, Madhubani,
- * Sanjhi, Pichwai, Maharaja, Warrior, Untamed Horse) the visitor inspects five
- * production layers, exactly as the garment is actually built:
- *   Historical reference → Luxury reinterpretation → DTF print → Puff print → Embroidery
- * Baked SVG + Framer Motion ("watched = baked"). The motifs are house
- * interpretations; production artwork — sourced with & credited to the origin
- * artisans (VERBAL_IDENTITY §11) — drops into the same layer slots.
+ * NAVARN — The Artifact Atelier (Chapter II)
+ * Design-first: the visitor chooses a STATEMENT PIECE (an independent artifact,
+ * not a fixed collection) and inspects the universal craft transformation that
+ * builds it — the same five stages every NAVARN artifact passes through:
+ *   Heritage reference → Luxury reinterpretation → DTF print → Puff print → Embroidery
+ * Reads from the artifact registry (content/artifacts), so unlimited future
+ * design universes appear here with no structural change. Baked SVG.
  */
 
 import { useId, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ART_MOTIFS } from "./motifs";
+import { LAUNCH_ARTIFACTS, toneHex } from "@/content/artifacts";
+import { MOTIFS } from "./motifs";
 import ArtworkDefs from "./ArtworkDefs";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const LAYERS = [
-  { key: "reference", label: "Historical reference", note: "As the artisan drew it — the living, imperfect hand." },
+  { key: "reference", label: "Heritage reference", note: "The story at its source — the living, imperfect hand." },
   { key: "luxury", label: "Luxury reinterpretation", note: "Honoured and refined, raised into gold." },
   { key: "dtf", label: "DTF print", note: "Laid to cloth in vivid, registered ink." },
-  { key: "puff", label: "Puff print", note: "Key motifs raised, proud of the surface." },
+  { key: "puff", label: "Puff print", note: "Key forms raised, proud of the surface." },
   { key: "embroidery", label: "Embroidery", note: "Stitched in gold thread — the story given weight." },
 ] as const;
 
 type LayerKey = (typeof LAYERS)[number]["key"];
 
 export default function ArtEmerge() {
-  const [artIdx, setArtIdx] = useState(0);
+  const [idx, setIdx] = useState(0);
   const [layer, setLayer] = useState<LayerKey>("reference");
-  const art = ART_MOTIFS[artIdx];
-  const Paths = art.Paths;
+  const artifact = LAUNCH_ARTIFACTS[idx];
+  const Paths = MOTIFS[artifact.motif];
+  const tone = toneHex(artifact.tone);
   const pfx = useId().replace(/:/g, "");
 
-  const selectArt = (i: number) => setArtIdx(i);
-
-  // Per-layer surface + motif treatment
   const f = (name: string) => `url(#${pfx}-${name})`;
   const surface: Record<
     LayerKey,
-    { bg: string; frame?: boolean; grid?: boolean; cotton?: boolean; caption: string; group: CSSProperties }
+    { bg: string; frame?: boolean; cotton?: boolean; caption: string; group: CSSProperties }
   > = {
     reference: {
       bg: "var(--parchment)",
-      caption: art.region,
-      group: {
-        color: "#5a4632",
-        ["--al-stroke" as string]: "#5a4632",
-        ["--al-sw" as string]: "1.9",
-        filter: f("hand"),
-      },
+      caption: artifact.universe,
+      group: { color: "#5a4632", ["--al-stroke" as string]: "#5a4632", ["--al-sw" as string]: "1.9", filter: f("hand") },
     },
     luxury: {
       bg: "var(--emerald)",
@@ -68,119 +61,86 @@ export default function ArtEmerge() {
       bg: "var(--ivory)",
       cotton: true,
       caption: "DTF · digital film transfer",
-      group: {
-        color: art.color,
-        ["--al-stroke" as string]: art.color,
-        ["--al-fill" as string]: `${art.color}22`,
-        ["--al-sw" as string]: "2",
-      },
+      group: { color: tone, ["--al-stroke" as string]: tone, ["--al-fill" as string]: `${tone}22`, ["--al-sw" as string]: "2" },
     },
     puff: {
       bg: "#14110e",
       caption: "Puff · raised print",
-      group: {
-        color: art.color,
-        ["--al-fill" as string]: art.color,
-        ["--al-stroke" as string]: art.color,
-        ["--al-sw" as string]: "2.4",
-        filter: f("puff"),
-      },
+      group: { color: tone, ["--al-fill" as string]: tone, ["--al-stroke" as string]: tone, ["--al-sw" as string]: "2.4", filter: f("puff") },
     },
     embroidery: {
       bg: "var(--emerald-deep)",
       cotton: true,
       caption: "Embroidery · gold thread",
-      group: {
-        color: "#C9A85C",
-        ["--al-stroke" as string]: "#C9A85C",
-        ["--al-sw" as string]: "2.8",
-      },
+      group: { color: "#C9A85C", ["--al-stroke" as string]: "#C9A85C", ["--al-sw" as string]: "2.8" },
     },
   };
-
   const s = surface[layer];
 
   return (
     <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-      {/* Left — the art selector (museum wall index) */}
+      {/* Left — the artifact index */}
       <div>
         <ul className="flex flex-col">
-          {ART_MOTIFS.map((a, i) => (
-            <li key={a.key}>
+          {LAUNCH_ARTIFACTS.map((a, i) => (
+            <li key={a.id}>
               <button
-                onClick={() => selectArt(i)}
-                aria-pressed={i === artIdx}
+                onClick={() => setIdx(i)}
+                aria-pressed={i === idx}
                 className="group flex w-full items-baseline justify-between border-b border-white/8 py-4 text-left transition-colors duration-reveal"
-                style={{ borderColor: i === artIdx ? a.color : undefined }}
+                style={{ borderColor: i === idx ? toneHex(a.tone) : undefined }}
               >
                 <span className="flex items-baseline gap-4">
                   <span
                     className="h-2 w-2 rounded-full transition-all duration-reveal"
                     style={{
-                      background: i === artIdx ? a.color : "rgba(138,133,120,0.35)",
-                      boxShadow: i === artIdx ? `0 0 8px ${a.color}` : "none",
+                      background: i === idx ? toneHex(a.tone) : "rgba(138,133,120,0.35)",
+                      boxShadow: i === idx ? `0 0 8px ${toneHex(a.tone)}` : "none",
                     }}
                   />
                   <span
                     className="font-display text-2xl transition-colors duration-reveal md:text-3xl"
-                    style={{ color: i === artIdx ? "var(--ivory)" : "var(--stone-grey)" }}
+                    style={{ color: i === idx ? "var(--ivory)" : "var(--stone-grey)" }}
                   >
                     {a.name}
                   </span>
                 </span>
                 <span className="hidden font-editorial text-base italic text-stone sm:block">
-                  {a.title}
+                  {a.universe}
                 </span>
               </button>
             </li>
           ))}
         </ul>
+        <p className="mt-6 max-w-reading font-editorial text-lg italic text-stone">
+          {artifact.essence}
+        </p>
       </div>
 
-      {/* Right — the layer atelier */}
+      {/* Right — the craft atelier */}
       <div>
         <motion.div
           className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-[3px] border border-white/10 transition-colors duration-cinematic"
           animate={{ backgroundColor: s.bg }}
           transition={{ duration: 0.9, ease: EASE }}
         >
-          {s.grid && (
-            <span
-              aria-hidden
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(217,190,134,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(217,190,134,0.12) 1px, transparent 1px)",
-                backgroundSize: "28px 28px",
-              }}
-            />
-          )}
-          {s.cotton && (
-            <span
-              aria-hidden
-              className="absolute inset-0 opacity-60"
-              style={{ filter: f("cotton") }}
-            />
-          )}
-          {s.frame && (
-            <span aria-hidden className="pointer-events-none absolute inset-4 rounded-[2px] border border-champagne/50" />
-          )}
+          {s.cotton && <span aria-hidden className="absolute inset-0 opacity-60" style={{ filter: f("cotton") }} />}
+          {s.frame && <span aria-hidden className="pointer-events-none absolute inset-4 rounded-[2px] border border-champagne/50" />}
 
           <AnimatePresence mode="wait">
             <motion.svg
-              key={`${art.key}-${layer}`}
+              key={`${artifact.id}-${layer}`}
               viewBox="0 0 100 100"
               className={`artlayer relative z-10 h-3/4 w-3/4 ${layer === "reference" ? "draw-on" : ""}`}
               style={s.group}
               role="img"
-              aria-label={`${art.name} — ${LAYERS.find((l) => l.key === layer)!.label}`}
+              aria-label={`${artifact.name} — ${LAYERS.find((l) => l.key === layer)!.label}`}
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.01 }}
               transition={{ duration: 0.6, ease: EASE }}
             >
               <ArtworkDefs idPrefix={pfx} />
-              {/* DTF registration ghosts (cyan/magenta) beneath the ink */}
               {layer === "dtf" && (
                 <>
                   <g transform="translate(1.1 0.8)" style={{ ["--al-stroke" as string]: "#3aa8c8", opacity: 0.35 } as CSSProperties}>
@@ -191,7 +151,6 @@ export default function ArtEmerge() {
                   </g>
                 </>
               )}
-              {/* Embroidery: dashed stitch pass behind the satin pass */}
               {layer === "embroidery" && (
                 <g style={{ ["--al-stroke" as string]: "#8C6A2E", strokeDasharray: "3 4" } as CSSProperties}>
                   <Paths />
@@ -206,7 +165,7 @@ export default function ArtEmerge() {
           </span>
         </motion.div>
 
-        {/* Layer selector */}
+        {/* Layer selector — the universal craft transformation */}
         <div className="mt-6 grid grid-cols-5 gap-2">
           {LAYERS.map((l, i) => (
             <button
@@ -214,7 +173,7 @@ export default function ArtEmerge() {
               onClick={() => setLayer(l.key)}
               aria-pressed={layer === l.key}
               className="border-t-2 pt-3 text-left transition-colors duration-reveal"
-              style={{ borderColor: layer === l.key ? art.color : "rgba(255,255,255,0.1)" }}
+              style={{ borderColor: layer === l.key ? tone : "rgba(255,255,255,0.1)" }}
             >
               <span
                 className="font-body text-[0.55rem] uppercase tracking-[0.16em]"

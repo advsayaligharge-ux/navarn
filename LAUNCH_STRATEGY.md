@@ -2,6 +2,8 @@
 
 ### Phase 1 · "India First. World Later." · The First 3 Years
 
+> **⚑ DESIGN-FIRST CORRECTION (authoritative, supersedes the collection-first framing below):** NAVARN's launch is **design-first / emotion-first, not collection-first.** Launch products are **independent statement-piece artifacts** — *Untamed Horse, Heritage Strip, Heritage Fusion, Rooted in Culture, Heritage 2.0, Royal & Mythic interpretations*, and future concepts spanning animals, birds, gods, warriors, kings, tribal arts, historical patterns, state arts and global motifs. Each garment is its own artifact, **not** necessarily part of a fixed collection. Treat every named art form below (Warli, Madhubani, Sanjhi, Pichwai, Maharaja, etc.) as *possible source material for an artifact*, **never** as a hardcoded collection or a required launch SKU. India remains the launch focus; the house is an unbounded design universe. The website architecture reflects this: it reads artifacts from a flat registry (`content/artifacts.ts`) and hardcodes no art form. The experience is organized around six pillars — **Story · Transformation · Heritage · Craft · Luxury · Identity.**
+
 > **Authoritative on launch phasing, positioning, priority collections and sequence.** NAVARN's long-term vision remains the global storytelling universe of `BRAND_UNIVERSE.md`. This document governs the **first three years**, in which that universe is deliberately set aside so the house can win one market completely: **India.** Where any prior document reaches for the world, this one reaches for Bharat — and this one governs Phase 1.
 
 ---

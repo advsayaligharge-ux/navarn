@@ -9,15 +9,14 @@ export const metadata: Metadata = {
     template: "%s · NAVARN",
   },
   description:
-    "NAVARN transforms India's living heritage — Warli, Madhubani, Kalamkari, Gond, Pattachitra, Maharaja, Mythology — into modern luxury menswear. Wear your heritage.",
+    "NAVARN is a luxury storytelling menswear house. Each garment is an independent artifact — heritage transformed into modern oversized luxury. Wear your heritage.",
   keywords: [
     "NAVARN",
+    "luxury storytelling menswear",
     "luxury heritage menswear",
     "Indian heritage fashion",
     "storytelling fashion",
-    "Warli",
-    "Madhubani",
-    "Maharaja",
+    "oversized statement pieces",
   ],
   openGraph: {
     title: "NAVARN — Wear Your Heritage",

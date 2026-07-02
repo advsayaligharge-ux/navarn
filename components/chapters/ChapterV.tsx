@@ -9,7 +9,10 @@
 
 import dynamic from "next/dynamic";
 import Reveal from "@/components/experience/Reveal";
-import { accent } from "@/tokens/colors";
+import { LAUNCH_ARTIFACTS, toneHex } from "@/content/artifacts";
+
+// The featured launch artifact — data-driven, no hardcoded art form
+const FEATURED = LAUNCH_ARTIFACTS[0];
 
 // The interactive WebGL tee — lazy, client-only (TECHNICAL §6)
 const Garment3D = dynamic(() => import("@/components/three/Garment3D"), {
@@ -40,27 +43,27 @@ export default function ChapterV() {
         {/* The interactive artifact */}
         <Reveal className="order-2 md:order-1">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[3px] bg-emerald shadow-[0_40px_80px_-30px_rgba(18,58,46,0.6)]">
-            <Garment3D accent={accent.warli} />
+            <Garment3D accent={toneHex(FEATURED.tone)} />
           </div>
         </Reveal>
 
         {/* The museum label */}
         <Reveal className="order-1 md:order-2">
-          <span className="caption text-brass">Chapter V — The Revelation</span>
+          <span className="caption text-brass">Chapter V — The Revelation · Luxury</span>
           <h2 className="mt-6 font-display text-[clamp(2.2rem,5vw,4.2rem)] font-medium leading-[1.05]">
-            From a wall in a<br />forgotten village.
+            One story,<br />worn in full.
           </h2>
           <p className="mt-8 max-w-reading font-editorial text-2xl italic text-charcoal/70">
-            To the shoulders of the modern man. This is not a print. This is a
-            page of history, worn.
+            Not a print. An artifact — a single statement piece, finished like an
+            heirloom.
           </p>
 
           <dl className="mt-12 space-y-4 border-t border-charcoal/10 pt-8">
             {[
-              ["Collection", "Warli — The First Language"],
-              ["Lineage", "Warli · Maharashtra"],
-              ["Craft", "DTF · Puff · Ivory-thread embroidery"],
-              ["Finishing", "Gold hem · Sealed as an heirloom"],
+              ["Artifact", FEATURED.name],
+              ["Essence", FEATURED.essence],
+              ["Story", FEATURED.heritageNote],
+              ["Craft", FEATURED.craft.join(" · ")],
             ].map(([k, v]) => (
               <div key={k} className="flex items-baseline gap-6">
                 <dt className="w-28 shrink-0 font-body text-[0.6rem] uppercase tracking-[0.24em] text-stone">
