@@ -21,7 +21,10 @@ export default function Home() {
   return (
     <SmoothScroll>
       <HouseChrome />
-      <main>
+      <h1 className="sr-only">
+        NAVARN — India&rsquo;s luxury heritage storytelling menswear house
+      </h1>
+      <main id="main">
         {/* Frame 0 */}
         <Threshold />
 

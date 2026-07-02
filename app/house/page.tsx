@@ -24,7 +24,7 @@ export default function HousePage() {
     <SmoothScroll>
       <MuseumAtmosphere />
       <HouseHeader />
-      <main className="lux-enter relative z-10 bg-charcoal px-6 pb-24 pt-20 md:px-12">
+      <main id="main" className="lux-enter relative z-10 bg-charcoal px-6 pb-24 pt-20 md:px-12">
         <Reveal className="mx-auto mb-20 max-w-3xl text-center">
           <span className="caption text-brass">The House</span>
           <h1 className="mt-6 font-display text-[clamp(2.4rem,6vw,5rem)] font-medium leading-[1.05] text-ivory">

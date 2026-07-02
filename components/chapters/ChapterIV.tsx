@@ -38,6 +38,8 @@ export default function ChapterIV() {
         end: `+=${STATIONS.length * 100}%`,
         pin: true,
         scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
         onUpdate: (self) =>
           setStep(Math.min(STATIONS.length - 1, Math.floor(self.progress * STATIONS.length))),
       });

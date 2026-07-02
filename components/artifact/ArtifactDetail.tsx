@@ -67,7 +67,7 @@ export default function ArtifactDetail({
   ];
 
   return (
-    <main className="bg-charcoal">
+    <main id="main" className="bg-charcoal">
       {/* ── Hero: front/back viewer + name/story ── */}
       <section className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-16 md:grid-cols-2 md:px-12 md:py-24">
         <div className="relative">

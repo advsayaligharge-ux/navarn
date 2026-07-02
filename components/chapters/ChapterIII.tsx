@@ -42,6 +42,8 @@ export default function ChapterIII() {
         end: "+=200%",
         pin: true,
         scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
         onUpdate: (self) => setP(self.progress),
       });
     }, root);

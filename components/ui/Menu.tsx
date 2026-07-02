@@ -7,7 +7,7 @@
  * an ink/gold curtain lift with weighted-silk easing (VISUAL_IDENTITY §4).
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Seal from "./Seal";
 
@@ -23,6 +23,21 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
+
+  // Escape closes; lock background scroll while open (accessibility + focus)
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   const go = (href: string) => {
     setOpen(false);
